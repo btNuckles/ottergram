@@ -57,7 +57,7 @@ a {
     border: 1px solid rgb(100%, 100%, 100%);
     border: 1px solid rgba(100%, 100%, 100%, 0.8);
     display: inline-block;
-    width: 120px;
+    max-width: 260px;
 }
 
 .thumbnail-list {
@@ -69,9 +69,11 @@ a {
     white-space: nowrap;
     overflow-x: auto;
     order: 2;
+    margin-left: 20px;
 }
 
-.thumbnail-item+.thumbnail-item {
+.thumbnail-item + .thumbnail-item {
+  margin-top: 20px;
 }
 
 .logo-text {
@@ -107,4 +109,16 @@ a {
     color: white;
     font-size: 40px;
     text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+}
+
+@media all and (min-width:768px) {
+  .main-content {
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .thumbnail-list {
+    flex-direction: column;
+    order: 0;
+  }
 }
