@@ -41,6 +41,20 @@ function addThumbClickHandler(thumb) {
         });
 }
 
+function addThumbNumPressHandler() {
+    'use strict';
+    document.body.addEventListener('keyup', function(event) {
+        event.preventDefault();
+        var thumbnails = getThumbnailsArray();
+        for (var i = 0; i < thumbnails.length; i++) {
+            var thumb = thumbnails[i];
+            if (event.keyCode === (i + 49)) {
+                setDetailsFromThumb(thumb);
+            }
+        }
+    });
+}
+
 function getThumbnailsArray() {
     'use strict';
     var thumbnails = document.querySelectorAll(THUMBNAIL_LINK_SELECTOR);
@@ -57,7 +71,6 @@ function addKeyPressHandler() {
     'use strict';
     document.body.addEventListener('keyup', function(event) {
         event.preventDefault();
-        console.log(event.keyCode);
         if (event.keyCode === ESC_KEY) {
             hideDetails();
         }
@@ -69,6 +82,7 @@ function initializeEvents() {
     'use strict';
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
+    addThumbNumPressHandler();
     addKeyPressHandler();
 }
 
